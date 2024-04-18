@@ -89,7 +89,9 @@ def counter_decorator(func):
     def decorator(*args, **kwargs):
         decorator.calls += 1
         result = func(*args, **kwargs)
+        print('*' * 20)
         print(f"Function '{func.__name__}' was called {decorator.calls} times")
+        print('*' * 20)
         return result
 
     decorator.calls = 0
@@ -97,11 +99,13 @@ def counter_decorator(func):
 
 
 def function():
-    print("Example function called")
+    print("function called")
 
+
+decorated_function = counter_decorator(function)
 
 while True:
-    function()
+    decorated_function()
     new_task = input("Run again (y/n):")
     if new_task.lower() != 'y':
         break
